@@ -18,8 +18,16 @@ vim.keymap.set("n", "<leader>svwm", function()
   require("vim-with-me").StopVimWithMe()
 end)
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<S-n>', ':split <C-r>=expand("%:p:h").."/"<CR>', { noremap = true, silent = false })
+vim.keymap.set("n", "<C-z>", ":q!<CR>")
+vim.keymap.set("n", "ZQ", ":Alpha<CR>")
+vim.keymap.set('n', '<C-n>', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
+vim.keymap.set('n', '<S-n>', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
+
+-- Custom key mappings for resizing splits
+vim.keymap.set('n', '<C-w>h', ':vertical resize -8<CR>')
+vim.keymap.set('n', '<C-w>l', ':vertical resize +8<CR>')
+vim.keymap.set('n', '<C-w>k', ':resize -5<CR>')
+vim.keymap.set('n', '<C-w>j', ':resize +5<CR>')
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
