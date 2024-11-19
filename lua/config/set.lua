@@ -24,3 +24,12 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+-- old
+vim.opt.showmode = false
+vim.opt.showcmd = false
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.clipboard:append('unnamedplus')
+vim.opt.wildmode = 'longest,list,full'
+vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')

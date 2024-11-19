@@ -18,9 +18,11 @@ vim.keymap.set("n", "<leader>svwm", function()
   require("vim-with-me").StopVimWithMe()
 end)
 
+-- old #1
+vim.keymap.set("v", ".", ":normal .<CR>")
 vim.keymap.set("n", "<C-z>", ":q!<CR>")
-vim.keymap.set('n', '<C-n>', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
-vim.keymap.set('n', '<S-n>', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
+vim.keymap.set('n', '<leader>h', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
+vim.keymap.set('n', '<leader>b', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
 
 -- Custom key mappings for resizing splits
 vim.keymap.set('n', '<C-w>h', ':vertical resize -8<CR>')
@@ -60,3 +62,17 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
+
+-- old #2
+-- Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    local currPos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd("%s/\\s\\+$//e")
+    vim.cmd("%s/\\n\\+\\%$//e")
+    vim.cmd("autocmd BufWritePre *.[ch] %s/\\%$/\\r/e")
+    vim.cmd("autocmd BufWritePre *neomutt* %s/^--$/-- /e")
+    vim.api.nvim_win_set_cursor(0, currPos)
+  end
+})
