@@ -21,15 +21,16 @@ end)
 -- old #1
 vim.keymap.set("v", ".", ":normal .<CR>")
 vim.keymap.set("n", "<C-z>", ":q!<CR>")
-vim.keymap.set('n', '<leader>h', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
-vim.keymap.set('n', '<leader>b', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
+vim.keymap.set("n", "<leader>h", ":vsplit <C-r>=expand('%:p:h')..'/'<CR>", { silent = false })
+vim.keymap.set("n", "<leader>b", ":split <C-r>=expand('%:p:h')..'/'<CR>", { silent = false })
+vim.keymap.set("n", "<C-s>", ":r ~/.config/nvim/snippets/<C-d>", { silent = true })
 
 -- Custom key mappings for resizing splits
-vim.keymap.set('n', '<leader>g', ':Git blame<CR>')
-vim.keymap.set('n', '<C-w>h', ':vertical resize -8<CR>')
-vim.keymap.set('n', '<C-w>l', ':vertical resize +8<CR>')
-vim.keymap.set('n', '<C-w>k', ':resize -5<CR>')
-vim.keymap.set('n', '<C-w>j', ':resize +5<CR>')
+vim.keymap.set("n", "<leader>g", ":Git blame<CR>")
+vim.keymap.set("n", "<C-w>h", ":vertical resize -8<CR>")
+vim.keymap.set("n", "<C-w>l", ":vertical resize +8<CR>")
+vim.keymap.set("n", "<C-w>k", ":resize -5<CR>")
+vim.keymap.set("n", "<C-w>j", ":resize +5<CR>")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
