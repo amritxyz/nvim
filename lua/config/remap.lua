@@ -53,10 +53,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/init.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
-vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
-end)
-
 -- old #2
 -- Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
 vim.api.nvim_create_autocmd("BufWritePre", {
