@@ -25,6 +25,7 @@ vim.keymap.set('n', '<leader>h', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { sil
 vim.keymap.set('n', '<leader>b', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
 
 -- Custom key mappings for resizing splits
+vim.keymap.set('n', '<leader>g', ':Git blame<CR>')
 vim.keymap.set('n', '<C-w>h', ':vertical resize -8<CR>')
 vim.keymap.set('n', '<C-w>l', ':vertical resize +8<CR>')
 vim.keymap.set('n', '<C-w>k', ':resize -5<CR>')
