@@ -19,6 +19,7 @@ vim.keymap.set("n", "<leader>svwm", function()
 end)
 
 -- old #1
+vim.keymap.set("n", "<C-p>", ":!pwd<CR>")
 vim.keymap.set("v", ".", ":normal .<CR>")
 vim.keymap.set("n", "<C-z>", ":q!<CR>")
 vim.keymap.set("n", "<leader>h", ":vsplit <C-r>=expand('%:p:h')..'/'<CR>", { silent = false })
