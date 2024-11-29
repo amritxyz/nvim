@@ -1,12 +1,12 @@
 -- ~/.config/nvim/lua/plugins/colorscheme.lua
 return {
   -- Install the color scheme you want to use
-  "catppuccin/nvim",  -- Example color scheme
+  "ellisonleao/gruvbox.nvim",  -- Example color scheme
 
   config = function()
     -- Set up MyColor function
     function MyColor(color)
-      color = color or "catppuccin"
+      color = color or "gruvbox"
       vim.cmd.colorscheme(color)
 
       -- Customize highlighting
