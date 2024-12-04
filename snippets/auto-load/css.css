@@ -1,0 +1,25 @@
+/* all */
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/*Body*/
+body{
+	background-color: black;
+	font-family: Hack;
+	height: 100vh;
+	width: 100%;
+}
+
+/*nav*/
+nav{
+	background-color: orange;
+	height: 5vh;
+	width: 100%;
+}
+
+/*section*/
+.main{
+}

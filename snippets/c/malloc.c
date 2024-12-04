@@ -3,13 +3,14 @@
 
 int main()
 {
+	int num_elements;
 	/* Allocate memory */
-	type *ptr = malloc(sizeof(type) * num_elements);
+	int *ptr = malloc(sizeof(int) * num_elements);
 
 	if (ptr == NULL)
 	/* Handle memory allocation error */
 	{
-		fprintf(stderr,"Memory allocation failed");
+		fprintf(stderr,"Memory allocation failed!");
 		exit(1);
 	}
 
@@ -17,7 +18,7 @@ int main()
 	// ...
 
 	/* Don't forget to free the allocated memory */
+	free(ptr);
 
 	return 0;
 }
-
