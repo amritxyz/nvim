@@ -27,6 +27,7 @@ vim.cmd([[autocmd BufNewFile  *.css 0r $HOME/.config/nvim/snippets/auto-load/css
 vim.cmd([[autocmd BufNewFile  *.js 0r $HOME/.config/nvim/snippets/auto-load/js.js|normal G]])
 vim.cmd([[autocmd BufNewFile  *.rs 0r $HOME/.config/nvim/snippets/auto-load/main.rs|normal G]])
 vim.cmd([[autocmd BufNewFile  *.go 0r $HOME/.config/nvim/snippets/auto-load/main.go|normal G]])
+vim.cmd([[autocmd BufNewFile  *.java 0r $HOME/.config/nvim/snippets/auto-load/main.java|normal Gddggf{i ]])
 
 -- Custom key mappings for resizing splits
 vim.keymap.set("n", "<leader>g", ":Git blame<CR>")
