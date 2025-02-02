@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.opt.mouse = ""
 vim.keymap.set("n", "<leader>o", vim.cmd.Tex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
