@@ -2,13 +2,11 @@
 return {
 	-- Install the color scheme you want to use
 	"ellisonleao/gruvbox.nvim",  -- Example color scheme
-	-- 'catppuccin/nvim',
 
 	config = function()
 		-- Set up MyColor function
 		function MyColor(color)
 			color = color or "gruvbox"
-			-- color = color or "catppuccin"
 			vim.cmd.colorscheme(color)
 
 			-- Customize highlighting

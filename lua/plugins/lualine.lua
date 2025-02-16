@@ -3,8 +3,7 @@ return {
 	config = function()
 		require('lualine').setup({
 			options = {
-				-- theme = 'gruvbox'
-				theme = 'catppuccin'
+				theme = 'gruvbox'
 			},
 			sections = {
 				lualine_a = { 'mode' },
