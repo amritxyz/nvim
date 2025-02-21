@@ -30,7 +30,8 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.wildmode = 'longest,list,full'
-vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
+-- vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
+
 -- vim.opt.guicursor = ""
 -- vim.opt.tabstop = 2
 -- vim.opt.softtabstop = 2
