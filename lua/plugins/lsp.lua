@@ -15,6 +15,7 @@ return {
 		require'lspconfig'.clangd.setup{}
 		require'lspconfig'.rust_analyzer.setup{}
 		require'lspconfig'.pyright.setup{}
+		-- require'lspconfig'.java_language_server.setup{}
 		-- vim.api.nvim_create_autocmd('LspAttach', {
 		-- 	callback = function(args)
 		-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
