@@ -13,8 +13,8 @@ return {
 	},
 	config = function()
 		require'lspconfig'.clangd.setup{}
-		require'lspconfig'.rust_analyzer.setup{}
-		require'lspconfig'.pyright.setup{}
+		-- require'lspconfig'.rust_analyzer.setup{}
+		-- require'lspconfig'.pyright.setup{}
 		-- require'lspconfig'.java_language_server.setup{}
 		-- vim.api.nvim_create_autocmd('LspAttach', {
 		-- 	callback = function(args)
