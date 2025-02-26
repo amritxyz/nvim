@@ -40,3 +40,11 @@ vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatopt
 -- vim.opt.softtabstop = 2
 -- vim.opt.shiftwidth = 2
 -- vim.opt.expandtab = true
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	desc = 'Highlight when yanking',
+	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
