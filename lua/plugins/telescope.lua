@@ -1,7 +1,7 @@
 return {
-	"nvim-telescope/telescope.nvim",  -- Telescope plugin
+	"nvim-telescope/telescope.nvim",
 
-	dependencies = { "nvim-lua/plenary.nvim" },  -- Dependency for Telescope
+	dependencies = { "nvim-lua/plenary.nvim" },
 
 	config = function()
 		require('telescope').setup {
@@ -11,19 +11,35 @@ return {
 					".local/share/", "share/", ".local/state/", "state/"
 					-- "build",
 				},
+				layout_config = {
+					horizontal = {
+						width = 0.9,
+						height = 0.9,
+						preview_width = 0.55,
+					},
+					vertical = {
+						width = 0.95,
+						height = 0.9,
+					},
+				},
 			}
 		}
-		-- Key mappings for Telescope
+
 		local builtin = require('telescope.builtin')
 
-		-- Define key mappings
-		-- Keybinding for Telescope find_files with hidden files and no ignore
 		vim.keymap.set('n', '<leader>ff', function()
 			require('telescope.builtin').find_files({ hidden = true })
 		end, { noremap = true, silent = true })
 
-		vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = 'Telescope git files' })
+		vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = 'Telescope Git Files' })
 
-		vim.keymap.set('n', '<leader>fh', builtin.live_grep, { desc = 'Telescope live grep' })
+		vim.keymap.set('n', '<leader>fh', builtin.live_grep, { desc = 'Telescope Live Grep' })
+
+		vim.keymap.set('n', '<leader>/', function()
+			builtin.live_grep {
+				grep_open_files = true,
+				prompt_title = 'Live Grep in Open Files',
+			}
+		end, { desc = 'Find [/] in Current File' })
 	end,
 }
