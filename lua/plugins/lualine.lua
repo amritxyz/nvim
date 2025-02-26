@@ -18,9 +18,7 @@ return {
 						shorting_target = 40,
 					}
 				},
-				lualine_x = { 'encoding', 'fileformat', 'filetype' },
-				lualine_y = { 'progress' },
-				lualine_z = { 'location' },
+				lualine_x = { 'filetype' },
 			},
 			inactive_sections = {
 				lualine_a = {},
