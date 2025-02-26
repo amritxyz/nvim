@@ -35,6 +35,8 @@ return {
 
 		vim.keymap.set('n', '<leader>fh', builtin.live_grep, { desc = 'Telescope Live Grep' })
 
+		vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Find existing buffers' })
+
 		vim.keymap.set('n', '<leader>/', function()
 			builtin.live_grep {
 				grep_open_files = true,
