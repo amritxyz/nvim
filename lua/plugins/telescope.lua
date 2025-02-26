@@ -41,5 +41,8 @@ return {
 				prompt_title = 'Live Grep in Open Files',
 			}
 		end, { desc = 'Find [/] in Current File' })
+		vim.keymap.set('n', '<leader>fn', function()
+			builtin.find_files { cwd = vim.fn.stdpath 'config' }
+		end, { desc = 'Find Neovim files' })
 	end,
 }
