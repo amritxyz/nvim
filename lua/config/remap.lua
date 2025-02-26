@@ -19,7 +19,7 @@ vim.keymap.set('n', '<C-z>', ':q!<CR>')
 vim.keymap.set('n', '<leader>v', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
 vim.keymap.set('n', '<leader>b', ':split <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
 vim.keymap.set('n', '<C-s>', ':r ~/.config/nvim/snippets/<C-d>', { silent = true })
-vim.keymap.set('n', '<leader>tt', ':0r ~/.config/nvim/lsnippets/<C-d>', { silent = true })
+vim.keymap.set('n', '<C-t>', ':0r ~/.config/nvim/lsnippets/<C-d>', { silent = true })
 
 -- New autobind stuffs
 vim.cmd([[autocmd BufNewFile  *.c 0r $HOME/.config/nvim/snippets/auto-load/main.c|normal G]])
@@ -41,7 +41,8 @@ vim.keymap.set({'n', 'v'}, '<leader>d', "\"_d")
 
 -- This is going to get me cancelled
 vim.keymap.set('i', '<C-c>', '<Esc>')
-vim.keymap.set('n', '<Esc>', ':echo "" | messages clear<CR>')
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+-- vim.keymap.set('n', '<Esc>', ':echo "" | messages clear<CR>')
 
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
