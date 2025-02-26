@@ -12,7 +12,7 @@ return {
 		},
 	},
 	config = function()
-		require'lspconfig'.clangd.setup{}
+		-- require'lspconfig'.clangd.setup{}
 		-- require'lspconfig'.rust_analyzer.setup{}
 		-- require'lspconfig'.pyright.setup{}
 		-- require'lspconfig'.java_language_server.setup{}
