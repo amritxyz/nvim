@@ -14,7 +14,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<leader>zig', '<cmd>LspRestart<cr>')
 
 -- old #1
-vim.keymap.set('n', '<C-p>', ':!pwd<CR>')
 vim.keymap.set('v', '.', ':normal .<CR>')
 vim.keymap.set('n', '<C-z>', ':q!<CR>')
 vim.keymap.set('n', '<leader>v', ':vsplit <C-r>=expand("%:p:h").."/"<CR>', { silent = false })
