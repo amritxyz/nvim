@@ -1,8 +1,12 @@
 -- Setmaps
+-- vim.opt.guicursor = 'a:block'
+
+vim.opt.showmode = true
+vim.opt.laststatus = 2
 vim.g.mapleader = ' '
 vim.o.spell = true
 vim.o.spelllang = 'en_us'
-vim.o.background = 'light'
+vim.o.background = 'dark'
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 vim.opt.number = true
