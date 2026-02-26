@@ -4,7 +4,7 @@
 vim.opt.showmode = true
 vim.opt.laststatus = 2
 vim.g.mapleader = ' '
-vim.o.spell = true
+vim.o.spell = false
 vim.o.spelllang = 'en_us'
 vim.o.background = 'dark'
 vim.g.maplocalleader = ' '
@@ -21,8 +21,12 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 250
+-- vim.opt.updatetime = 1000
+-- vim.opt.timeoutlen = 1000
+vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+vim.opt.ttimeout = true
+vim.opt.ttimeoutlen = 10
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
@@ -37,7 +41,7 @@ vim.opt.breakindent = true
 vim.opt.expandtab = false
 vim.opt.smartindent = true
 
-vim.highlight.priorities.semantic_tokens = 95
+-- vim.highlight.priorities.semantic_tokens = 95
 
 -- netrw config
 vim.g.netrw_banner = 0 -- gets rid of the annoying banner for netrw
@@ -57,11 +61,17 @@ vim.g.netrw_compress = 'gzip'
 vim.g.netrw_cursor = 2
 vim.g.netrw_preview = 0
 vim.g.netrw_alto = 1
-vim.opt.timeout = true
-vim.opt.timeoutlen = 0
+vim.g.loaded_matchparen = 1
 
 -- vim.cmd [[autocmd BufNewFile  *.jsx 0r $HOME/.config/nvim/snippets/auto-load/jsx.jsx|normal Gddgg0fC]]
-vim.cmd [[ autocmd FileType * let g:matchparen_enabled = 0 ]]
+-- vim.cmd [[ autocmd FileType * let g:matchparen_enabled = 0 ]]
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'text', 'tex' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 
 -- vim.opt.tabstop = 8
 -- vim.opt.softtabstop = 8

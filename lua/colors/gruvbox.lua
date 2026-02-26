@@ -1,4 +1,4 @@
--- gruvbox-material-dark.lua
+-- gruvbox.lua
 
 local M = {}
 
@@ -8,35 +8,34 @@ local c = {
   bg2 = '#3c3836',
   bg3 = '#504945',
   bg4 = '#665c54',
-  bg5 = '#7c6f64',
-  fg0 = '#d4be98',
-  fg1 = '#ddc7a1',
 
-  -- Colors
-  red = '#ea6962',
-  orange = '#e78a4e',
-  yellow = '#d8a657',
-  green = '#a9b665',
-  aqua = '#89b482',
-  blue = '#7daea3',
+  fg0 = '#ebdbb2',
+  fg1 = '#fbf1c7',
+  fg2 = '#d5c4a1',
+  fg3 = '#bdae93',
+  fg4 = '#a89984',
+
+  red = '#fb4934',
+  orange = '#fe8019',
+  yellow = '#fabd2f',
+  green = '#b8bb26',
+  aqua = '#8ec07c',
+  blue = '#83a598',
   purple = '#d3869b',
 
-  grey0 = '#7c6f64',
-  grey1 = '#928374',
-  grey2 = '#a89984',
+  grey0 = '#a89984',
+  grey1 = '#bdae93',
+  grey2 = '#d5c4a1',
 
-  -- Diff background colors
-  bg_diff_green = '#34381b',
-  bg_diff_red = '#3c1f1e',
-  bg_diff_blue = '#24334d',
+  bg_diff_green = '#282828',
+  bg_diff_red = '#282828',
+  bg_diff_blue = '#282828',
 
-  -- Visual/Selection background
-  bg_visual_red = '#452d2d',
-  bg_visual_yellow = '#453d2d',
+  bg_visual_red = '#32302f',
+  bg_visual_yellow = '#32302f',
 
-  -- Special backgrounds (inferred)
-  bg_dim = '#232323',
-  bg_current_word = '#3a3632',
+  bg_dim = '#282828',
+  bg_current_word = '#32302f',
 }
 
 -- Safe highlight function
@@ -65,29 +64,29 @@ end
 
 -- vim.o.termguicolors = true
 -- vim.o.background = 'dark'
--- vim.g.colors_name = 'gruvbox-material-dark'
+-- vim.g.colors_name = 'gruvbox'
 
 -- === UI Elements ===
-hi('Normal', c.fg0, c.bg0)
+hi('Normal', c.fg0, 'none')
 hi('LineNr', c.grey1, c.bg1)
 hi('CursorLineNr', c.fg1, c.bg1, 'bold')
 hi('StatusLine', c.grey2, c.bg1)
 hi('StatusLineNC', c.grey1, c.bg1)
-hi('VertSplit', c.bg3, c.bg0)
+hi('VertSplit', c.bg3, c.bg0) -- Adjusted for contrast
 hi('Folded', c.grey1, c.bg1)
-hi('SignColumn', nil, c.bg0)
+hi('SignColumn', nil, c.bg0) -- Often same as Normal bg or slightly different
 hi('ColorColumn', nil, c.bg1)
 hi('CursorLine', nil, c.bg1)
-hi('Visual', nil, c.bg2)
+hi('Visual', nil, c.bg4) -- Often uses a darker background
 hi('Pmenu', c.fg1, c.bg1)
 hi('PmenuSel', c.bg0, c.blue, 'bold') -- Inverted for selection
 hi('WildMenu', c.bg0, c.yellow, 'bold') -- Inverted for emphasis
 hi('ErrorMsg', c.red, nil, 'bold')
-hi('WarningMsg', c.yellow)
+hi('WarningMsg', c.yellow) -- Changed to yellow for warning
 hi('Title', c.blue, nil, 'bold')
 
 -- === Syntax groups ===
-hi('cInclude', c.purple)
+hi('cInclude', c.purple) -- PreProc like include
 hi('Keyword', c.red)
 hi('Conditional', c.red)
 hi('Repeat', c.red)
@@ -121,10 +120,10 @@ hi('InfoHighlight', c.bg1, c.orange, 'bold')
 vim.cmd [[
   augroup HighlightCommentsKeywords
     autocmd!
-    autocmd BufEnter,BufReadPost * call matchadd("TodoHighlight", "\\vTODO")
-    autocmd BufEnter,BufReadPost * call matchadd("FixHighlight", "\\vFIX")
-    autocmd BufEnter,BufReadPost * call matchadd("NoteHighlight", "\\vNOTE")
-    autocmd BufEnter,BufReadPost * call matchadd("InfoHighlight", "\\vINFO")
+    autocmd BufEnter,BufReadPost * call matchadd("TodoHighlight", "\\v\\s*TODO:")
+    autocmd BufEnter,BufReadPost * call matchadd("FixHighlight", "\\v\\s*FIX:")
+    autocmd BufEnter,BufReadPost * call matchadd("NoteHighlight", "\\v\\s*NOTE:")
+    autocmd BufEnter,BufReadPost * call matchadd("InfoHighlight", "\\v\\s*INFO:")
   augroup END
 ]]
 
@@ -174,7 +173,7 @@ hi('Whitespace', c.grey1)
 hi('EndOfBuffer', c.bg0)
 
 -- === Popup / Completion ===
-hi('PmenuSbar', nil, c.bg2)
+hi('PmenuSbar', nil, c.bg2) -- Slightly different shade for scrollbar
 hi('PmenuThumb', nil, c.grey1)
 
 -- === Cursor / selections ===
@@ -184,8 +183,8 @@ hi('TermCursorNC', c.bg1, c.grey1) -- Dimmed for non-current
 
 -- === Telescope highlights ===
 -- Adjusted backgrounds to match gruvbox material scheme
-hi('TelescopeNormal', c.fg0, c.bg0)
-hi('TelescopeBorder', c.bg3, c.bg0)
+hi('TelescopeNormal', c.fg0, nil)
+hi('TelescopeBorder', c.bg3, nil)
 -- hi('TelescopePromptNormal', c.fg0, c.bg1)
 -- hi('TelescopePromptBorder', c.blue, c.bg1)
 hi('TelescopePromptPrefix', c.orange, nil)
@@ -194,9 +193,9 @@ hi('TelescopeSelectionCaret', c.red, c.bg2, 'bold')
 hi('TelescopeMatching', c.yellow)
 hi('TelescopeMultiSelection', c.aqua)
 hi('TelescopeTitle', c.blue, c.bg0, 'bold')
-hi('TelescopePreviewTitle', c.aqua, c.bg0, 'bold')
+hi('TelescopePreviewTitle', c.aqua, nil, 'bold')
 hi('TelescopePromptTitle', c.green, nil, 'bold')
-hi('TelescopeResultsTitle', c.fg0, c.bg0, 'bold')
+hi('TelescopeResultsTitle', c.fg0, nil, 'bold')
 
 vim.cmd [[
   hi! link Function      Identifier
@@ -222,14 +221,14 @@ vim.cmd [[
   hi! link FoldColumn    SignColumn
 ]]
 
--- Treesitter overrides
+-- Treesitter overrides (adjusted for Gruvbox Material feel)
 local treesitter = {
   ['@keyword'] = c.red,
   ['@conditional'] = c.red,
   ['@repeat'] = c.red,
   ['@operator'] = c.fg0, -- Use main fg or a subtle color
   ['@function'] = c.green,
-  ['@function.builtin'] = c.aqua,
+  ['@function.builtin'] = c.aqua, -- Often aqua for built-ins
   ['@type'] = c.yellow,
   ['@variable'] = c.fg0,
   ['@constant'] = c.purple,
@@ -238,20 +237,20 @@ local treesitter = {
   ['@number'] = c.purple,
   ['@boolean'] = c.purple,
   ['@field'] = c.blue, -- Fields often blue
-  ['@attribute'] = c.aqua,
+  ['@attribute'] = c.aqua, -- Attributes often aqua
   ['@namespace'] = c.aqua,
-  ['@parameter'] = c.blue,
-  ['@punctuation.bracket'] = c.fg0,
-  ['@punctuation.delimiter'] = c.fg0,
-  ['@constructor'] = c.yellow,
+  ['@parameter'] = c.blue, -- Parameters often blue
+  ['@punctuation.bracket'] = c.fg0, -- Match main fg
+  ['@punctuation.delimiter'] = c.fg0, -- Match main fg
+  ['@constructor'] = c.yellow, -- Constructors often yellow/type
 }
 
 for group, color in pairs(treesitter) do
   hi(group, color)
 end
 
-hi('LspReferenceText', nil, c.bg3, 'none')
-hi('LspReferenceRead', nil, c.bg3, 'none')
-hi('LspReferenceWrite', nil, c.bg3, 'none')
+hi('LspReferenceText', nil, c.base02, 'none')
+hi('LspReferenceRead', nil, c.base02, 'none')
+hi('LspReferenceWrite', nil, c.base02, 'none')
 
 return M
