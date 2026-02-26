@@ -57,8 +57,11 @@ vim.g.netrw_compress = 'gzip'
 vim.g.netrw_cursor = 2
 vim.g.netrw_preview = 0
 vim.g.netrw_alto = 1
+vim.opt.timeout = true
+vim.opt.timeoutlen = 0
 
 -- vim.cmd [[autocmd BufNewFile  *.jsx 0r $HOME/.config/nvim/snippets/auto-load/jsx.jsx|normal Gddgg0fC]]
+vim.cmd [[ autocmd FileType * let g:matchparen_enabled = 0 ]]
 
 -- vim.opt.tabstop = 8
 -- vim.opt.softtabstop = 8
