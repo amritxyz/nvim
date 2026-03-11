@@ -3,7 +3,6 @@ require 'config.keymap'
 require 'config.undercurl'
 require 'config.api'
 require 'config.extras'
-require 'colors.gruvbox'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -49,6 +48,3 @@ require('lazy').setup({
     },
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
