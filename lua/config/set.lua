@@ -63,6 +63,7 @@ vim.g.netrw_preview = 0
 vim.g.netrw_alto = 1
 vim.g.loaded_matchparen = 1
 
+vim.cmd [[autocmd BufWritePost /home/void/.local/dox/notes/mds/*.md silent !sh '...' --backup <afile>:p]]
 -- vim.cmd [[autocmd BufNewFile  *.jsx 0r $HOME/.config/nvim/snippets/auto-load/jsx.jsx|normal Gddgg0fC]]
 -- vim.cmd [[ autocmd FileType * let g:matchparen_enabled = 0 ]]
 
