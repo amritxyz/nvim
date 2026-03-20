@@ -18,3 +18,4 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufEnter' }, {
     vim.cmd 'syntax spell toplevel'
   end,
 })
+vim.api.nvim_create_user_command('W', 'w', {})

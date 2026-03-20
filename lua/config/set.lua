@@ -61,7 +61,7 @@ vim.g.netrw_compress = 'gzip'
 vim.g.netrw_cursor = 2
 vim.g.netrw_preview = 0
 vim.g.netrw_alto = 1
-vim.g.loaded_matchparen = 1
+-- vim.g.loaded_matchparen = true
 
 vim.cmd [[autocmd BufWritePost /home/void/.local/dox/notes/mds/*.md silent !sh '...' --backup <afile>:p]]
 -- vim.cmd [[autocmd BufNewFile  *.jsx 0r $HOME/.config/nvim/snippets/auto-load/jsx.jsx|normal Gddgg0fC]]
