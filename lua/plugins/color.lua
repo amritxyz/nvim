@@ -16,11 +16,11 @@ return {
 
       on_highlights = function(highlight, color)
         highlight.Boolean = { fg = color.green }
-        highlight.Comment = { fg = color.border }
-        highlight.TodoHighlight = { fg = color.bg_main, bg = color.gold, bold = true }
-        highlight.FixHighlight = { fg = color.bg_main, bg = color.red_intense, bold = true }
-        highlight.NoteHighlight = { fg = color.bg_main, bg = color.blue_intense, bold = true }
-        highlight.InfoHighlight = { fg = color.bg_main, bg = color.green_intense, bold = true }
+        highlight.Comment = { fg = color.border, italic = true }
+        highlight.TodoHighlight = { fg = color.gold, bg = none, bold = true, italic = false, nocombine = true }
+        highlight.FixHighlight = { fg = color.red_intense, bg = none, bold = true, italic = false, nocombine = true }
+        highlight.NoteHighlight = { fg = color.blue_intense, bg = none, bold = true, italic = false, nocombine = true }
+        highlight.InfoHighlight = { fg = color.green_intense, bg = none, bold = true, italic = false, nocombine = true }
       end,
     }
     vim.cmd.colorscheme 'modus_operandi'
@@ -29,10 +29,10 @@ return {
     vim.cmd [[
       augroup HighlightCommentsKeywords
         autocmd!
-        autocmd BufEnter,BufReadPost * call matchadd("TodoHighlight", "\\vTODO")
-        autocmd BufEnter,BufReadPost * call matchadd("FixHighlight",  "\\vFIX")
-        autocmd BufEnter,BufReadPost * call matchadd("NoteHighlight", "\\vNOTE")
-        autocmd BufEnter,BufReadPost * call matchadd("InfoHighlight", "\\vINFO")
+        autocmd BufEnter,BufReadPost * call matchadd("TodoHighlight", "\\v(^|\\s)\\zsTODO\\ze(\\s|$)")
+        autocmd BufEnter,BufReadPost * call matchadd("FixHighlight",  "\\v(^|\\s)\\zsFIX\\ze(\\s|$)")
+        autocmd BufEnter,BufReadPost * call matchadd("NoteHighlight", "\\v(^|\\s)\\zsNOTE\\ze(\\s|$)")
+        autocmd BufEnter,BufReadPost * call matchadd("InfoHighlight", "\\v(^|\\s)\\zsINFO\\ze(\\s|$)")
       augroup END
     ]]
   end,
