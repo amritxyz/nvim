@@ -27,7 +27,12 @@ vim.keymap.set('n', '<leader>lI', ':0r ~/.config/nvim/non_lua/og_license_snippet
 
 vim.cmd 'autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o'
 
-vim.keymap.set('n', '<leader>c', function()
+vim.keymap.set('n', '<leader>co', function()
   vim.cmd 'write!'
   vim.cmd('!compiler "' .. vim.fn.expand '%:p' .. '"')
 end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>ch', function()
+  local q = vim.fn.input 'cht.sh: '
+  vim.cmd('!cht ' .. q)
+end)
