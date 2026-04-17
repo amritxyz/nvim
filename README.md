@@ -1,6 +1,6 @@
-# Kickstart-Nvim
+# Nvim
 
-A simple, minimal, modular neovim config inspired by [kickstart-nvim](https://github.com/nvim-lua/kickstart.nvim).
+A simple, minimal, neovim config.
 
 ---
 

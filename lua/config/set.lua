@@ -1,83 +1,63 @@
--- Setmaps
--- vim.opt.guicursor = 'a:block'
-
-vim.opt.showmode = true
-vim.opt.laststatus = 2
 vim.g.mapleader = ' '
-vim.o.spell = false
-vim.o.spelllang = 'en_us'
-vim.o.background = 'dark'
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = false
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = ''
-vim.keymap.set('n', '<leader>o', vim.cmd.Tex)
-vim.opt.showmode = false
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-vim.opt.undofile = true
+vim.opt.breakindent = true
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.cursorline = true
+vim.opt.expandtab = false
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = 'yes'
--- vim.opt.updatetime = 1000
--- vim.opt.timeoutlen = 1000
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-vim.opt.ttimeout = true
-vim.opt.ttimeoutlen = 10
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.opt.inccommand = "split"
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.inccommand = 'split'
-vim.opt.cursorline = true
+vim.opt.mouse = ''
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
-
-vim.opt.wrap = false
-
-vim.opt.breakindent = true
-vim.opt.expandtab = false
+vim.opt.showmode = true
+vim.opt.signcolumn = "yes"
+vim.opt.smartcase = true
 vim.opt.smartindent = true
-
--- vim.highlight.priorities.semantic_tokens = 95
-
--- netrw config
-vim.g.netrw_banner = 0 -- gets rid of the annoying banner for netrw
-vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 0 -- change from left splitting to right splitting
-vim.g.netrw_liststyle = 3 -- tree style view in netrw
-vim.g.netrw_winsize = 70 -- takes up 70% of the screen
-vim.g.netrw_sizestyle = 'H'
-vim.g.netrw_sort_sequence = [[[\/]$,*]] -- sort directories first
-vim.g.netrw_keepdir = 0
-vim.g.netrw_sort_sequence = [[[\/]$,*]]
-vim.g.netrw_sizestyle = 'H'
-vim.g.netrw_localcopydircmd = 'cp -r'
-vim.g.netrw_localmkdir = 'mkdir -p'
-vim.g.netrw_localrmdir = 'rm -r'
-vim.g.netrw_compress = 'gzip'
-vim.g.netrw_cursor = 2
-vim.g.netrw_preview = 0
-vim.g.netrw_alto = 1
--- vim.g.loaded_matchparen = true
+vim.opt.spell = false
+vim.opt.spelllang = 'en_us'
+vim.opt.tabstop = 8
+vim.opt.swapfile = false
+vim.opt.autoread = true
+vim.opt.undodir = vim.fn.expand '~/.local/state/nvim/undo/'
+vim.opt.undofile = true
+vim.opt.wrap = false
+vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.backspace = "indent,eol,start"
+vim.opt.iskeyword:append("-")
+vim.opt.path:append("**")
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.updatetime = 300
+vim.opt.lazyredraw = true
 
 vim.cmd [[autocmd BufWritePost /home/void/.local/dox/notes/mds/*.md silent !sh '...' --backup <afile>:p]]
--- vim.cmd [[autocmd BufNewFile  *.jsx 0r $HOME/.config/nvim/snippets/auto-load/jsx.jsx|normal Gddgg0fC]]
--- vim.cmd [[ autocmd FileType * let g:matchparen_enabled = 0 ]]
+vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'markdown', 'text', 'tex' },
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.opt_local.spell = true
+    vim.highlight.on_yank()
   end,
 })
 
--- vim.opt.tabstop = 8
--- vim.opt.softtabstop = 8
--- vim.opt.shiftwidth = 8
+vim.api.nvim_set_hl(0, 'MiniStatuslineMode', {
+  bold = false,
+})
 
--- vim.g.neovide_background_opacity = 0.9
--- vim.g.neovide_transparency = true
--- vim.g.neovide_background_blur = 4
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufEnter' }, {
+  pattern = '/tmp/bash-*',
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = 'en_us'
+    vim.cmd 'syntax spell toplevel'
+  end,
+})
+vim.api.nvim_create_user_command('W', 'w', {})
+
+vim.api.nvim_set_hl(0, 'SpellBad', { undercurl = true, sp = '#DC322F' })
+vim.api.nvim_set_hl(0, 'SpellCap', { undercurl = true, sp = '#B58900' })
+vim.api.nvim_set_hl(0, 'SpellRare', { undercurl = true, sp = '#268BD2' })
+vim.api.nvim_set_hl(0, 'SpellLocal', { undercurl = true, sp = '#2AA198' })
