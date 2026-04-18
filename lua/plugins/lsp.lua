@@ -1,8 +1,11 @@
--- TODO Add mason and autocompletion
+vim.pack.add({
+  "https://github.com/neovim/nvim-lspconfig"
+})
 
-vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
-
-local servers = { "clangd", "lua_ls", "tinymist", "pyright", "gopls" }
+local servers = {
+  "clangd", "lua_ls", "tinymist", "pyright", "gopls", "ts_ls", "html",
+  "pyright", "tailwindcss", "cssls", "zls", "rust_analyzer"
+}
 
 for _, server in pairs(servers) do
   vim.lsp.enable(server)
@@ -27,3 +30,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
   end,
 })
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT"
+      },
+      diagnostics = {
+        globals = {
+          "vim",
+          "require"
+        }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true)
+      },
+      telemetry = {
+        enable = false
+      }
+    },
+  },
+})
+
+vim.cmd("set completeopt+=noselect")

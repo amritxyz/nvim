@@ -2,10 +2,12 @@ require "config.color"
 require "config.set"
 require "config.keymaps"
 
-require "plugins.snacks"
+require "plugins.telescope"
 require "plugins.oil"
 require "plugins.gitsigns"
 require "plugins.lsp"
+require "plugins.mason"
+require "plugins.cmp"
 
 local function pack_clean()
   local active_plugins = {}

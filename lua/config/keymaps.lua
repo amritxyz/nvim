@@ -15,12 +15,9 @@ vim.keymap.set('n', '<leader>li', ':0r ~/.config/nvim/non_lua/f_license_snippets
 vim.keymap.set('n', '<leader>lI', ':0r ~/.config/nvim/non_lua/og_license_snippets/<C-d>', { silent = true })
 
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
-vim.keymap.set('n', '<leader>sf', function() require('snacks').picker.files() end)
-vim.keymap.set('n', '<leader>sh', function() require('snacks').picker.help() end)
-vim.keymap.set('n', '<leader>sg', function() require('snacks').picker.grep() end)
-vim.keymap.set('n', '<leader><leader>', function() require('snacks').picker.grep_buffers() end)
-vim.keymap.set('n', 'gd', function() require('snacks').picker.lsp_declarations() end)
-vim.keymap.set('n', 'gi', function() require('snacks').picker.lsp_type_definitions() end)
-vim.keymap.set('n', 'gr', function() require('snacks').picker.lsp_references() end)
+vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
 vim.keymap.set('n', '<leader>sb', ':Pick buffers<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+
+vim.keymap.set("n", "<leader>ff", '<cmd>FzfLua files<CR>')
+vim.keymap.set("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
