@@ -3,8 +3,19 @@ vim.pack.add({
 })
 
 local servers = {
-  "clangd", "lua_ls", "tinymist", "pyright", "gopls", "ts_ls", "html",
-  "pyright", "tailwindcss", "cssls", "zls", "rust_analyzer"
+  "clangd",
+  "cssls",
+  "gopls",
+  "html",
+  "jdtls",
+  "lua_ls",
+  "pyright",
+  "pyright",
+  "rust_analyzer",
+  "tailwindcss",
+  "tinymist",
+  "ts_ls",
+  "zls"
 }
 
 for _, server in pairs(servers) do
