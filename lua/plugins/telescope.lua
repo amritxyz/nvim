@@ -5,6 +5,20 @@ vim.pack.add({
 
 require("telescope").setup({
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+    },
+    preview = {
+      filesize_limit = 0.10,
+      highlight_limit = 0.3,
+    },
     file_ignore_patterns = {
       'node_modules',
       'dist',
@@ -32,16 +46,16 @@ require("telescope").setup({
     },
     mappings = {
       i = {
-        ["<S-j>"] = require("telescope.actions").preview_scrolling_down,
-        ["<S-k>"] = require("telescope.actions").preview_scrolling_up,
-        ["<S-h>"] = require("telescope.actions").preview_scrolling_left,
-        ["<S-l>"] = require("telescope.actions").preview_scrolling_right,
+        ["<C-j>"] = require("telescope.actions").preview_scrolling_down,
+        ["<C-k>"] = require("telescope.actions").preview_scrolling_up,
+        ["<C-h>"] = require("telescope.actions").preview_scrolling_left,
+        ["<C-l>"] = require("telescope.actions").preview_scrolling_right,
       },
       n = {
-        ["<S-j>"] = require("telescope.actions").preview_scrolling_down,
-        ["<S-k>"] = require("telescope.actions").preview_scrolling_up,
-        ["<S-h>"] = require("telescope.actions").preview_scrolling_left,
-        ["<S-l>"] = require("telescope.actions").preview_scrolling_right,
+        ["<C-j>"] = require("telescope.actions").preview_scrolling_down,
+        ["<C-k>"] = require("telescope.actions").preview_scrolling_up,
+        ["<C-h>"] = require("telescope.actions").preview_scrolling_left,
+        ["<C-l>"] = require("telescope.actions").preview_scrolling_right,
       },
     },
   },
