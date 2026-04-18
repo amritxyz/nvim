@@ -26,6 +26,12 @@ vim.o.updatetime = 50
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local bufnr = event.buf
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+    if not client.server_capabilities.documentHighlightProvider then
+      return
+    end
+
     local group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
