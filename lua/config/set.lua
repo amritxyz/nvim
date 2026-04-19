@@ -1,14 +1,21 @@
 vim.g.mapleader = ' '
+vim.opt.autoread = true
+vim.opt.backspace = "indent,eol,start"
 vim.opt.breakindent = true
 vim.opt.clipboard = 'unnamedplus'
+vim.opt.colorcolumn = "80"
+vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.cursorline = true
 vim.opt.expandtab = false
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
+vim.opt.iskeyword:append("-")
+vim.opt.lazyredraw = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = ''
 vim.opt.number = true
+vim.opt.path:append("**")
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 vim.opt.showmode = true
@@ -17,20 +24,14 @@ vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.spell = false
 vim.opt.spelllang = 'en_us'
-vim.opt.tabstop = 8
 vim.opt.swapfile = false
-vim.opt.autoread = true
+vim.opt.tabstop = 8
 vim.opt.undodir = vim.fn.expand '~/.local/state/nvim/undo/'
 vim.opt.undofile = true
-vim.opt.wrap = false
-vim.opt.completeopt = "menuone,noinsert,noselect"
-vim.opt.backspace = "indent,eol,start"
-vim.opt.iskeyword:append("-")
-vim.opt.path:append("**")
+vim.opt.updatetime = 300
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
-vim.opt.updatetime = 300
-vim.opt.lazyredraw = true
+vim.opt.wrap = false
 
 vim.cmd [[autocmd BufWritePost /home/void/.local/dox/notes/mds/*.md silent !sh '...' --backup <afile>:p]]
 vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
