@@ -7,7 +7,7 @@ local servers = {
   "cssls",
   "gopls",
   "html",
-  "jdtls",
+  -- "jdtls",
   "lua_ls",
   "pyright",
   "pyright",
