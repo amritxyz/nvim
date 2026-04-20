@@ -5,7 +5,7 @@ require("oil").setup({
     "premissions",
     "icons"
   },
-  view_options = {
-    show_hidden = true,
+  win_options = {
+    wrap = true,
   }
 })

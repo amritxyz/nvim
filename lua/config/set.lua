@@ -28,10 +28,11 @@ vim.opt.swapfile = false
 vim.opt.tabstop = 8
 vim.opt.undodir = vim.fn.expand '~/.local/state/nvim/undo/'
 vim.opt.undofile = true
-vim.opt.updatetime = 300
+vim.opt.updatetime = 100
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 vim.opt.wrap = false
+-- vim.opt.termsync = false
 
 vim.cmd [[autocmd BufWritePost /home/void/.local/dox/notes/mds/*.md silent !sh '...' --backup <afile>:p]]
 vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]

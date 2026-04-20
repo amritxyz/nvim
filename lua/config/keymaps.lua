@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>li', ':0r ~/.config/nvim/non_lua/f_license_snippets
 vim.keymap.set('n', '<leader>lI', ':0r ~/.config/nvim/non_lua/og_license_snippets/<C-d>', { silent = true })
 
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
-vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+vim.keymap.set('n', '<leader>sn', function() telescope.builtin.find_files { cwd = vim.fn.stdpath 'config' } end )
 vim.keymap.set('n', '<leader>sb', ':Pick buffers<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
