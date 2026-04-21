@@ -16,6 +16,7 @@ local servers = {
   "tinymist",
   "ts_ls",
   -- "clangd",
+  -- "csharp_ls"
   -- "pyright",
   -- "rust_analyzer"
   -- "zls",

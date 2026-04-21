@@ -5,6 +5,7 @@ vim.pack.add({
 local servers = {
   "clangd",
   "cssls",
+  -- "csharp_ls",
   "gopls",
   "html",
   -- "jdtls",
