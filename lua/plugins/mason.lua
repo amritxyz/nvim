@@ -8,14 +8,14 @@ vim.pack.add({
 
 local servers = {
   "cssls",
-  "gopls",
+  -- "gopls",
   "html",
   "lua_ls",
   "pyright",
   "tailwindcss",
   "tinymist",
   "ts_ls",
-  -- "clangd",
+  "clangd",
   -- "csharp_ls"
   -- "pyright",
   -- "rust_analyzer"

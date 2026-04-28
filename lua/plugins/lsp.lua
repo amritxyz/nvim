@@ -6,7 +6,7 @@ local servers = {
   "clangd",
   "cssls",
   -- "csharp_ls",
-  "gopls",
+  -- "gopls",
   "html",
   -- "jdtls",
   "lua_ls",
