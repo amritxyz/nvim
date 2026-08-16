@@ -88,6 +88,14 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.textwidth = 80
+    vim.opt_local.formatoptions:append("t")
+  end,
+})
+
 vim.api.nvim_create_user_command('W', 'w', {})
 
 vim.api.nvim_set_hl(0, 'SpellBad', { undercurl = true, sp = '#DC322F' })

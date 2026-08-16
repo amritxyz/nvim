@@ -1,33 +1,40 @@
-vim.pack.add { "https://github.com/sainnhe/gruvbox-material" }
-vim.g.gruvbox_material_background = 'soft'
-vim.g.gruvbox_material_foreground = 'original'
--- vim.g.gruvbox_material_better_performance = true
-vim.cmd.colorscheme('gruvbox-material')
--- vim.cmd.colorscheme('color')
-vim.cmd.hi 'Comment gui=none'
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#504945" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#504945" })
-vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "#504945" })
-vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "#504945" })
+vim.pack.add({
+  { src = 'https://codeberg.org/amrit/modus-themes.nvim.git' },
+})
 
-vim.api.nvim_set_hl(0, 'TodoHighlight', { fg = "#32302f", bg = '#fabd2f', bold = true })
-vim.api.nvim_set_hl(0, 'FixHighlight',  { fg = "#32302f", bg = '#fb4934', bold = true })
-vim.api.nvim_set_hl(0, 'NoteHighlight', { fg = "#32302f", bg = '#b8bb26', bold = true })
-vim.api.nvim_set_hl(0, 'InfoHighlight', { fg = "#32302f", bg = '#fe8019', bold = true })
-vim.cmd [[
-  augroup HighlightCommentsKeywords
-  autocmd!
-    autocmd BufEnter,BufReadPost * call matchadd("TodoHighlight", "\\v(^|\\s)\\zsTODO\\ze(\\s|$)")
-    autocmd BufEnter,BufReadPost * call matchadd("FixHighlight",  "\\v(^|\\s)\\zsFIX\\ze(\\s|$)")
-    autocmd BufEnter,BufReadPost * call matchadd("NoteHighlight", "\\v(^|\\s)\\zsNOTE\\ze(\\s|$)")
-    autocmd BufEnter,BufReadPost * call matchadd("InfoHighlight", "\\v(^|\\s)\\zsINFO\\ze(\\s|$)")
-  augroup END
-]]
+require('modus-themes').setup({
+  style = 'modus_operandi',
+  variant = 'default',
 
--- require("mini.colors").setup({})
--- lua require('mini.colors').get_colorscheme():resolve_links():compress():add_cterm_attributes():add_terminal_colors():write({ name = 'colors' })
+  styles = {
+    functions = { italic = true },
+  },
+
+  on_colors = function(colors)
+    colors.error = colors.red_faint
+  end,
+
+  on_highlights = function(highlight, color)
+    highlight.Boolean = { fg = color.green }
+    highlight.Comment = { fg = color.border, italic = true }
+
+    highlight.TodoHighlight = { fg = color.gold, bg = 'none', bold = true, italic = false, nocombine = true, }
+    highlight.FixHighlight = { fg = color.red_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
+    highlight.NoteHighlight = { fg = color.blue_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
+    highlight.InfoHighlight = { fg = color.green_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
+  end,
+})
+
+vim.cmd.colorscheme('modus_operandi')
+
+vim.api.nvim_create_augroup('HighlightCommentsKeywords', {})
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufReadPost' }, {
+  group = 'HighlightCommentsKeywords',
+  callback = function()
+    vim.fn.matchadd('TodoHighlight', [[\v(^|\s)\zsTODO\ze(\s|$)]])
+    vim.fn.matchadd('FixHighlight', [[\v(^|\s)\zsFIX\ze(\s|$)]])
+    vim.fn.matchadd('NoteHighlight', [[\v(^|\s)\zsNOTE\ze(\s|$)]])
+    vim.fn.matchadd('InfoHighlight', [[\v(^|\s)\zsINFO\ze(\s|$)]])
+  end,
+})
