@@ -18,7 +18,4 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>sb', ':Pick buffers<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>ff", '<cmd>FzfLua files<CR>')
-vim.keymap.set("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
-
 vim.keymap.set('n', '<leader>pa', function() local path = vim.fn.expand '%:p' vim.fn.setreg('+', path) print('file:', path) end)

@@ -15,13 +15,13 @@ require('modus-themes').setup({
   end,
 
   on_highlights = function(highlight, color)
-    highlight.Boolean = { fg = color.green }
-    highlight.Comment = { fg = color.border, italic = true }
+    -- highlight.Boolean = { fg = color.green }
+    -- highlight.Comment = { fg = color.border, italic = true }
 
-    highlight.TodoHighlight = { fg = color.gold, bg = 'none', bold = true, italic = false, nocombine = true, }
-    highlight.FixHighlight = { fg = color.red_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
-    highlight.NoteHighlight = { fg = color.blue_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
-    highlight.InfoHighlight = { fg = color.green_intense, bg = 'none', bold = true, italic = false, nocombine = true, }
+    highlight.TodoHighlight = { fg = color.gold, bg = 'none', bold = true, italic = true, nocombine = true, }
+    highlight.FixHighlight = { fg = color.red_intense, bg = 'none', bold = true, italic = true, nocombine = true, }
+    highlight.NoteHighlight = { fg = color.blue_intense, bg = 'none', bold = true, italic = true, nocombine = true, }
+    highlight.InfoHighlight = { fg = color.green_intense, bg = 'none', bold = true, italic = true, nocombine = true, }
   end,
 })
 
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufReadPost' }, {
   group = 'HighlightCommentsKeywords',
   callback = function()
     vim.fn.matchadd('TodoHighlight', [[\v(^|\s)\zsTODO\ze(\s|$)]])
-    vim.fn.matchadd('FixHighlight', [[\v(^|\s)\zsFIX\ze(\s|$)]])
+    vim.fn.matchadd('FixHighlight', [[\v(^|\s)\zsFIXME\ze(\s|$)]])
     vim.fn.matchadd('NoteHighlight', [[\v(^|\s)\zsNOTE\ze(\s|$)]])
     vim.fn.matchadd('InfoHighlight', [[\v(^|\s)\zsINFO\ze(\s|$)]])
   end,
