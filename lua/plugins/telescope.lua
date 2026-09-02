@@ -7,6 +7,7 @@ local fzf = require("fzf-lua")
 fzf.setup({
   'ivy',
 
+  files = { hidden = false },
   defaults = { file_icons = false },
 
   winopts = {
@@ -29,6 +30,22 @@ fzf.setup({
       ["ctrl-j"] = "down",
       ["ctrl-k"] = "up",
     },
+  },
+
+  file_ignore_patterns = {
+    '.cache/',
+    '.git/',
+    '.github/',
+    '.local/share/',
+    '.local/state/',
+    '.mozilla/',
+    'build/',
+    'dist',
+    'node_modules',
+    'share/',
+    'state/',
+    'target/',
+    'yarn.lock',
   },
 })
 
