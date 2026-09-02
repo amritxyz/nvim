@@ -7,8 +7,9 @@ local fzf = require("fzf-lua")
 fzf.setup({
   'ivy',
 
-  files = { hidden = false },
   defaults = { file_icons = false },
+  files = { hidden = false },
+  fzf_colors = { true, bg = '-1', },
 
   winopts = {
     height = 0.5,
@@ -20,6 +21,7 @@ fzf.setup({
       horizontal = "right:60%",
     },
   },
+
   keymap = {
     builtin = {
       ["<C-j>"] = "preview-page-down",
