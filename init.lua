@@ -2,7 +2,7 @@ require "config.set"
 require "config.keymaps"
 
 require "plugins.color"
-require "plugins.telescope"
+require "plugins.fzf"
 require "plugins.oil"
 require "plugins.gitsigns"
 require "plugins.lsp"
