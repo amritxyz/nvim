@@ -102,3 +102,16 @@ vim.api.nvim_set_hl(0, 'SpellBad', { undercurl = true, sp = '#DC322F' })
 vim.api.nvim_set_hl(0, 'SpellCap', { undercurl = true, sp = '#B58900' })
 vim.api.nvim_set_hl(0, 'SpellRare', { undercurl = true, sp = '#268BD2' })
 vim.api.nvim_set_hl(0, 'SpellLocal', { undercurl = true, sp = '#2AA198' })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sh",
+  callback = function(ev)
+    local name = vim.api.nvim_buf_get_name(ev.buf)
+    if not name:match("/bash%-fc[%-%.]") then return end
+    vim.schedule(function()
+      if not vim.api.nvim_buf_is_valid(ev.buf) then return end
+      pcall(vim.treesitter.stop, ev.buf)
+      vim.bo[ev.buf].syntax = "sh"
+    end)
+  end,
+})

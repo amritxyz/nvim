@@ -8,9 +8,10 @@ vim.pack.add({
 
 -- auto completion
 local acp = false
-local doc = false
+local doc = true
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
 require("luasnip").setup({
   keep_roots = true,
   link_roots = true,
@@ -19,39 +20,40 @@ require("luasnip").setup({
 })
 
 require("blink.cmp").setup({
-  signature = {
-    enabled = d,
-    window = {
-      show_documentation = acp,
-    }
-  },
+  snippets = { preset = "luasnip" },
+
   keymap = {
-    preset = "none",
-    ["<C-i>"] = { "show_documentation", "fallback" },
-    ["<C-n>"] = { "show", "select_next", "fallback" },
-    ["<C-p>"] = { "show", "select_prev", "fallback" },
-    ["<C-y>"] = { "accept", "fallback" },
+    preset        = "none",
+    ["<C-k>"]     = { "show_documentation", "hide_documentation", "fallback" },
+    ["<C-n>"]     = { "show", "select_next", "fallback" },
+    ["<C-p>"]     = { "show", "select_prev", "fallback" },
+    ["<C-y>"]     = { "accept", "fallback" },
     ["<C-Space>"] = { "show", "fallback" },
-    ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
-    ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-    ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-    ["<C-l>"] = { "snippet_forward", "fallback" },
-    ["<C-h>"] = { "snippet_backward", "fallback" },
+    ["<C-b>"]     = { "scroll_documentation_up", "fallback" },
+    ["<C-f>"]     = { "scroll_documentation_down", "fallback" },
+    ["<C-l>"]     = { "snippet_forward", "fallback" },
+    ["<C-h>"]     = { "snippet_backward", "fallback" },
   },
+
+  signature = {
+    enabled = doc,
+    window = { show_documentation = acp },
+  },
+
   fuzzy = { implementation = "lua" },
+
   completion = {
     documentation = { auto_show = doc },
     menu = { auto_show = acp },
     list = {
-      selection = {
-        preselect = true,
-        auto_insert = false
-      }
-    }
+      selection = { preselect = true, auto_insert = false }
+    },
   },
+
   sources = {
     default = { "lsp", "buffer", "snippets", "path" },
   },
+
   appearance = {
     use_nvim_cmp_as_default = true,
     nerd_font_variant = "normal"

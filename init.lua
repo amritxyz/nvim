@@ -9,6 +9,7 @@ require "plugins.lsp"
 require "plugins.mason"
 require "plugins.cmp"
 require "plugins.harpoon"
+require "plugins.treesitter"
 
 local function pack_clean()
   local active_plugins = {}
