@@ -1,3 +1,20 @@
+-- performance enhancement for fast startups
+vim.loader.enable()
+
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+
+-- imports
 require "config.set"
 require "config.keymaps"
 
@@ -38,10 +55,9 @@ end
 
 vim.keymap.set("n", "<leader>pc", pack_clean)
 
-local uv = vim.loop
+local uv = vim.uv
 local STATE_FILE = vim.fn.expand '~/.config/nvim/modus_state'
 
--- Read current state from file (default to light)
 local function read_state()
   local f = io.open(STATE_FILE, 'r')
   if not f then
@@ -53,9 +69,7 @@ local function read_state()
   return line == 'dark' and 'dark' or 'light'
 end
 
--- Apply colorscheme based on state
 local function apply_theme(state)
-  vim.cmd 'highlight clear'
   if state == 'light' then
     vim.opt.background = 'light'
     vim.cmd.colorscheme 'modus_operandi'
@@ -65,18 +79,27 @@ local function apply_theme(state)
   end
 end
 
--- Initial apply at startup
-apply_theme(read_state())
+local current = read_state()
+apply_theme(current)
 
--- ---- File watcher ----
-local handle = uv.new_fs_event()
-if handle then
-  uv.fs_event_start(handle, STATE_FILE, {}, function(err)
+local watcher = uv.new_fs_event()
+
+local function watch()
+  if not watcher then
+    return
+  end
+  watcher:stop()
+  watcher:start(STATE_FILE, {}, vim.schedule_wrap(function(err)
     if err then
       return
     end
-    vim.schedule(function()
-      apply_theme(read_state())
-    end)
-  end)
+    local state = read_state()
+    if state ~= current then
+      current = state
+      apply_theme(state)
+    end
+    watch()
+  end))
 end
+
+watch()

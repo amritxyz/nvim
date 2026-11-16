@@ -30,9 +30,11 @@ vim.cmd.colorscheme('modus_operandi')
 
 vim.api.nvim_create_augroup('HighlightCommentsKeywords', {})
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufReadPost' }, {
+vim.api.nvim_create_autocmd('BufWinEnter', {
   group = 'HighlightCommentsKeywords',
   callback = function()
+    if vim.w.kw_matches then return end
+    vim.w.kw_matches = true
     vim.fn.matchadd('TodoHighlight', [[\v(^|\s)\zsTODO\ze(\s|$)]])
     vim.fn.matchadd('FixHighlight', [[\v(^|\s)\zsFIXME\ze(\s|$)]])
     vim.fn.matchadd('NoteHighlight', [[\v(^|\s)\zsNOTE\ze(\s|$)]])

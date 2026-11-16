@@ -1,7 +1,7 @@
 vim.pack.add({
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/rafamadriz/friendly-snippets",
-  "https://github.com/Saghen/blink.cmp"
+  { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
 })
 
 -- vim.cmd("set completeopt+=noselect")
@@ -20,7 +20,7 @@ require("luasnip").setup({
 })
 
 require("blink.cmp").setup({
-  snippets = { preset = "luasnip" },
+  snippets = { preset = "default" },
 
   keymap = {
     preset        = "none",
@@ -39,8 +39,6 @@ require("blink.cmp").setup({
     enabled = acp,
     window = { show_documentation = acp },
   },
-
-  fuzzy = { implementation = "lua" },
 
   completion = {
     documentation = { auto_show = doc },
