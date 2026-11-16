@@ -36,7 +36,7 @@ require("blink.cmp").setup({
   },
 
   signature = {
-    enabled = doc,
+    enabled = acp,
     window = { show_documentation = acp },
   },
 

@@ -17,6 +17,7 @@ require('modus-themes').setup({
   on_highlights = function(highlight, color)
     -- highlight.Boolean = { fg = color.green }
     -- highlight.Comment = { fg = color.border, italic = true }
+    highlight.Whitespace = {fg = color.border }
 
     highlight.TodoHighlight = { fg = color.gold, bg = 'none', bold = true, italic = true, nocombine = true, }
     highlight.FixHighlight = { fg = color.red_intense, bg = 'none', bold = true, italic = true, nocombine = true, }
