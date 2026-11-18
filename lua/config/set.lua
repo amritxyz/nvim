@@ -18,7 +18,6 @@ vim.opt.number = true
 vim.opt.path:append("**")
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
-vim.opt.showmode = true
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
@@ -115,3 +114,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end)
   end,
 })
+
+vim.o.signcolumn   = 'yes:1'
+vim.o.statuscolumn = '%s%=%l%#LineNrSep#│%*'
+vim.o.laststatus = 0
+vim.o.cmdheight  = 1
+vim.o.ruler      = true
+vim.o.rulerformat = '%60(%=%f  %l:%c %m%)'
+vim.o.showmode   = false
+vim.o.showcmd    = false
+vim.o.statusline = '%=%F  %l:%c %m'
+vim.o.fillchars  = 'eob:~,vert:│,stl: ,stlnc: '
