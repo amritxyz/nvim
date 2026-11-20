@@ -125,3 +125,11 @@ vim.o.showmode   = false
 vim.o.showcmd    = false
 vim.o.statusline = '%=%F  %l:%c %m'
 vim.o.fillchars  = 'eob:~,vert:│,stl: ,stlnc: '
+
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"  -- or use "indent" if you don't use Treesitter
+-- vim.opt.foldlevelstart = 99  -- open all folds when a file loads
+-- vim.opt.foldenable = true
+
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevelstart = 99
