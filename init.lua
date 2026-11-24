@@ -18,7 +18,7 @@ vim.g.loaded_tutor_mode_plugin = 1
 require "config.set"
 require "config.keymaps"
 
-require "plugins.color"
+-- require "plugins.color"
 require "plugins.fzf"
 require "plugins.oil"
 require "plugins.gitsigns"
@@ -56,6 +56,7 @@ end
 vim.keymap.set("n", "<leader>pc", pack_clean)
 
 local uv = vim.uv
+local modus = require 'colors.modus'
 local STATE_FILE = vim.fn.expand '~/.config/nvim/modus_state'
 
 local function read_state()
@@ -70,13 +71,14 @@ local function read_state()
 end
 
 local function apply_theme(state)
-  if state == 'light' then
-    vim.opt.background = 'light'
-    vim.cmd.colorscheme 'modus_operandi'
-  else
-    vim.opt.background = 'dark'
-    vim.cmd.colorscheme 'modus_vivendi'
-  end
+  modus.load(state == 'light' and 'operandi' or 'vivendi')
+  -- if state == 'light' then
+  --   vim.opt.background = 'light'
+  --   vim.cmd.colorscheme 'modus_operandi'
+  -- else
+  --   vim.opt.background = 'dark'
+  --   vim.cmd.colorscheme 'modus_vivendi'
+  -- end
 end
 
 local current = read_state()
